@@ -2,17 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 70%;
-  }
-  50% {
-    background-position: 100% 20%;
-  }
-  100% {
-    background-position: 0% 70%;
-  }
-}
 
 * {
   margin: 0;
@@ -21,9 +10,14 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(to right, rgb(44, 28, 100), black,black, rgb(44, 28, 100) );
-  background-size: 200% 200%;
-  animation: gradientAnimation 7s ease infinite;
+}
+
+.back-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-position: center;
 }
 
 html {
