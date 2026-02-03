@@ -16,19 +16,26 @@
   <body>
     <div class="page-loader" id="page-loader" aria-hidden="true">
       <span class="page-loader-percent" id="page-loader-percent">0%</span>
+      <span class="page-loader-cmd" id="page-loader-cmd"></span>
     </div>
 
     <main class="page">
-      <div class="hero" id="profile">
+      <div class="hero scroll-anim" id="profile">
         <div class="hero-inner">
-          <h1 class="hero-title">Gulshan Kumar</h1>
+          <h1 class="hero-title type-on-scroll">Gulshan Kumar</h1>
           <p class="hero-subtitle">Software Developer</p>
+          <p class="hero-contact">
+            <a href="mailto:contact@gulshankumar.dev" class="contact-email">contact@gulshankumar.dev</a>
+          </p>
+          <p class="hero-contact">
+            <a href="tel:+918570967793" class="contact-phone">+91-8570967793</a>
+          </p>
         </div>
       </div>
 
       <div id="about" class="page-block">
-        <div class="page-wrap">
-          <h2 class="block-title">About me</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">About me</h2>
           <p class="resume-text">
             Hi, I'm Gulshan Kumar, a software developer based in India. I'm currently working remotely for Swiggy, building APIs and services with Python, JavaScript, Go, and Java (Spring Boot), and working with AWS, Kafka, and modern data stores. I'm always exploring new technologies and challenges.
           </p>
@@ -36,8 +43,8 @@
       </div>
 
       <div id="experience" class="page-block">
-        <div class="page-wrap">
-          <h2 class="block-title">Experience</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">Experience</h2>
           <div class="resume-item">
             <h3 class="resume-item-title">Swiggy (Software Developer I)</h3>
             <p class="resume-item-meta">March 24 – present</p>  
@@ -68,8 +75,8 @@
       </div>
 
       <div id="education" class="page-block">
-        <div class="page-wrap">
-          <h2 class="block-title">Education</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">Education</h2>
           <div class="resume-item">
             <h3 class="resume-item-title">National Institute of Technology, Kurukshetra</h3>
             <p class="resume-item-meta">2017 – 2021</p>
@@ -84,8 +91,8 @@
       </div>
 
       <div id="skills" class="page-block">
-        <div class="page-wrap">
-          <h2 class="block-title">Skills</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">Skills</h2>
           <div class="skills-grid">
             <p class="resume-text"><strong>Back-end</strong> Python, JavaScript, Go, Java, Spring Boot</p>
             <p class="resume-text"><strong>Database</strong> MySQL, DynamoDB, Snowflake</p>
@@ -96,8 +103,8 @@
       </div>
 
       <div id="projects" class="page-block">
-        <div class="page-wrap">
-          <h2 class="block-title">Projects</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">Projects</h2>
           <div class="resume-item">
             <h3 class="resume-item-title">Jobify – MERN</h3>
             <ul class="resume-bullets">
@@ -127,8 +134,8 @@
       </div>
 
       <div id="certifications" class="page-block">
-        <div class="page-wrap">
-          <h2 class="block-title">Certifications</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">Certifications</h2>
           <ul class="resume-bullets">
             <li>MERN Stack Course – MongoDB, Express, React and NodeJS – Udemy</li>
             <li>Django 4 and Python Full-Stack Developer Masterclass – Udemy</li>
@@ -137,8 +144,8 @@
       </div>
 
       <div id="contact" class="page-block page-block-contact">
-        <div class="page-wrap">
-          <h2 class="block-title">Contact</h2>
+        <div class="page-wrap scroll-anim">
+          <h2 class="block-title type-on-scroll">Contact</h2>
           <p class="hero-contact">
             <a href="mailto:contact@gulshankumar.dev" class="contact-email">contact@gulshankumar.dev</a>
             <span class="sep">⋄</span>
@@ -158,9 +165,13 @@
       (function () {
         var loader = document.getElementById("page-loader");
         var percentEl = document.getElementById("page-loader-percent");
+        var cmdEl = document.getElementById("page-loader-cmd");
         var start = Date.now();
         var minTime = 3000;
         var loadDone = false;
+        var cmdTyped = false;
+        var cmdText = "cd resume.pdf";
+        var cmdCharDelay = 55;
         function tryHide() {
           if (!loadDone) return;
           var elapsed = Date.now() - start;
@@ -168,8 +179,42 @@
             setTimeout(tryHide, minTime - elapsed);
             return;
           }
+          if (!cmdTyped && loader && cmdEl) {
+            cmdTyped = true;
+            loader.classList.add("show-cmd");
+            cmdEl.textContent = "";
+            var cursor = document.createElement("span");
+            cursor.className = "typewriter-cursor";
+            cursor.setAttribute("aria-hidden", "true");
+            cmdEl.appendChild(cursor);
+            for (var i = 0; i < cmdText.length; i++) {
+              var span = document.createElement("span");
+              span.className = "type-char";
+              span.textContent = cmdText[i];
+              cmdEl.appendChild(span);
+            }
+            var chars = cmdEl.querySelectorAll(".type-char");
+            chars.forEach(function (c, i) {
+              setTimeout(function () {
+                c.classList.add("visible");
+                cmdEl.insertBefore(cursor, c.nextSibling);
+              }, i * cmdCharDelay);
+            });
+            var typeDuration = cmdText.length * cmdCharDelay;
+            setTimeout(function () {
+              if (cursor.parentNode) cursor.remove();
+            }, typeDuration);
+            setTimeout(function () {
+              if (loader) loader.classList.add("loaded");
+              document.body.classList.add("page-revealed");
+              document.body.dispatchEvent(new CustomEvent("page-revealed"));
+            }, typeDuration + 500);
+            return;
+          }
+          if (cmdTyped) return;
           if (loader) loader.classList.add("loaded");
           document.body.classList.add("page-revealed");
+          document.body.dispatchEvent(new CustomEvent("page-revealed"));
         }
         window.addEventListener("load", function () {
           loadDone = true;

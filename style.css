@@ -35,14 +35,53 @@
   pointer-events: none;
 }
 
-.page-loader-percent {
+.page-loader-percent,
+.page-loader-cmd {
   font-family: var(--font);
-  font-size: clamp(2.5rem, 18vw, 2.5rem);
+  font-size: clamp(1.125rem, 5vw, 1.375rem);
   font-weight: 700;
   color: var(--text);
   letter-spacing: 0.05em;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+.page-loader-cmd {
+  display: none;
+}
+
+.page-loader.show-cmd .page-loader-percent {
+  display: none;
+}
+
+.page-loader.show-cmd .page-loader-cmd {
+  display: block;
+}
+
+.page-loader-cmd .type-char {
+  opacity: 0;
+  transition: opacity 0.06s ease;
+}
+
+.page-loader-cmd .type-char.visible {
+  opacity: 1;
+}
+
+/* Blinking line cursor – loader and page typewriters */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  min-height: 1em;
+  margin-left: 2px;
+  background: var(--text);
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }
 
 html {
@@ -165,6 +204,11 @@ a {
   font-size: 0.875rem;
   color: var(--text-muted);
   line-height: 1.5;
+  margin-bottom: 0.25rem;
+}
+
+.hero-contact:last-child {
+  margin-bottom: 0;
 }
 
 .hero-contact a {
@@ -191,6 +235,38 @@ a {
 }
 
 body.page-revealed .page {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll-in animation */
+.scroll-anim {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.scroll-anim.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.type-on-scroll .type-char {
+  opacity: 0;
+  transition: opacity 0.08s ease;
+}
+
+.type-on-scroll .type-char.visible {
+  opacity: 1;
+}
+
+.line-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.line-reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
