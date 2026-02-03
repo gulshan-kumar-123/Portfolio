@@ -1,141 +1,48 @@
-@media screen and (max-width: 1400px) {
-  #profile {
-    height: 83vh;
-    margin-bottom: 4rem;
-  }
-  .about-containers {
-    flex-wrap: wrap;
-
-  }
-}
-
+/* Tablet and below */
 @media screen and (max-width: 1200px) {
-  #desktop-nav {
-    display: none;
-  }
-  #hamburger-nav {
-    display: flex;
-  }
-  #experience,
-  .experience-details-container {
-    margin-top: 2rem;
-  }
-  #profile,
-  .section-container {
-    display: flex;
-  }
-  .arrow {
-    display: none;
-  }
-  section,
-  .section-container {
-    height: fit-content;
-  }
-  section {
-    margin: 0 5%;
-  }
-  .about-containers {
-    margin-top: 0;
-  }
-  canvas {
-    display: block;
+  .page-block {
+    padding: 1.5rem 1.5rem;
   }
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    justify-content: flex-start;
-    align-items: center;
-    z-index: -1;
+  .hero {
+    padding: 2.5rem 1.5rem 2rem;
   }
 }
 
+/* Mobile */
 @media screen and (max-width: 600px) {
-  body,
-  html {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
+  .hero {
+    padding: 2rem 1rem 1.5rem;
+    min-height: 35vh;
   }
-  #contact,
-  footer {
-    height: 40vh;
+
+  .hero-title {
+    font-size: 1.75rem;
   }
-  #profile {
-    height: 83vh;
-  }
-  article {
+
+  .hero-subtitle {
     font-size: 1rem;
   }
-  footer nav {
-    height: fit-content;
-    margin-bottom: 2rem;
-  }
-  .about-containers,
-  .contact-info-upper-container,
-  .btn-container {
-    flex-wrap: wrap;
-    margin-top: 2rem;
-  }
-  .contact-info-container {
-    margin: 0;
-  }
-  .contact-info-container p,
-  .nav-links li a {
-    font-size: 1rem;
-  }
-  .experience-sub-title {
-    font-size: 1.25rem;
+
+  .hero-contact {
+    font-size: 0.8125rem;
   }
 
-  #hamburger-nav{
-    margin-top: 10px;
-    margin-inline: -60px;
+  .hero-contact .sep {
+    margin: 0 0.35rem;
   }
-  .logo {
-    font-size: 1.5rem;
+
+  .page-block {
+    padding: 1.25rem 1rem;
   }
-  .nav-links {
+
+  .block-title {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .contact-pills {
     flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  .section__pic-container {
-    width: 100%;
-    height: auto;
-    justify-content: center;
-  }
-
-  .section__text{
-    height: 50%;
-  }
-  .section__text__p2 {
-    font-size: 1.25rem;
-  }
-  .title {
-    font-size: 2.5rem;
-  }
-  .text-container {
-    text-align: justify;
-  }
-
-  canvas {
-    display: block;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    justify-content: flex-start;
-    align-items: center;
-    z-index: -1;
-    margin: 0;
-    padding: 0;
+    align-items: stretch;
   }
 }

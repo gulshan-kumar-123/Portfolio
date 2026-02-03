@@ -1,347 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta
-      name="google-site-verification"
-      content="VxyvZBeiqzeq4bCuHuqtTQLos5nodczzq-OHBIjknFk" />
+    <meta name="google-site-verification" content="VxyvZBeiqzeq4bCuHuqtTQLos5nodczzq-OHBIjknFk" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gulshan Kumar</title>
+    <title>Gulshan Kumar — Software Developer</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
     <link rel="icon" type="image/png" href="./assets/title.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <!-- <div>
-      <video autoplay loop muted playsinline class="back-video">
-        <source src="./assets/bgvideo5.mp4" />
-      </video>
-    </div> -->
-    <div class="content content--canvas"></div>
-    <nav id="desktop-nav">
-      <div class="logo">Gulshan Kumar</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Gulshan Kumar</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Skills</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <!-- <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Gulshan Kumar</h1>
-        <p class="section__text__p2">Fullstack Developer</p>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="window.open('https://www.linkedin.com/in/gulshan-kumar-767661164/', '_blank')" />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="window.open('https://github.com/gulshan-kumar-123?tab=repositories', '_blank')" />
-        </div>
-      </div> -->
-      <img src="./assets/arrow.png" alt="Arrow icon" class="main-arrow" />
-    </section>
-    <section id="about">
-      <h1 class="title">About Me</h1>
+    <div class="page-loader" id="page-loader" aria-hidden="true">
+      <span class="page-loader-percent" id="page-loader-percent">0%</span>
+    </div>
 
-      <div class="section-container">
-        <div class="about-details-container">
-          <div class="text-container">
-            <p>Hi, I am Gulshan Kumar, Fullstack developer based in India.</p>
-            <p>
-              I am always looking for new challenges, fancy new technologies, or
-              just exploring the endless world of possibilities.
-            </p>
-          </div>
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon" />
-              <h3>Backend developer @cruv.org</h3>
-              <p>Building next gen food delivery app based on ONDC.</p>
-              <br />
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon" />
-              <h3>Education</h3>
-              <p>B.tech, NIT kurukshetra</p>
-            </div>
-          </div>
+    <main class="page">
+      <div class="hero" id="profile">
+        <div class="hero-inner">
+          <h1 class="hero-title">Gulshan Kumar</h1>
+          <p class="hero-subtitle">Software Developer</p>
         </div>
       </div>
-    </section>
-    <section id="experience">
-      <h1 class="title">Skills</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title"></h2>
-            <div class="article-container">
-              <article>
-                <img src="./assets/png/bxl-html5.png" alt="html" class="icon" />
-                <div>
-                  <h3>HTML</h3>
-                </div>
-              </article>
 
-              <article>
-                <img src="./assets/png/bxl-css3.png" alt="css" class="icon" />
-                <div>
-                  <h3>CSS</h3>
-                </div>
-              </article>
-
-              <article>
-                <img
-                  src="./assets/png/bxl-tailwind-css.png"
-                  alt="tailwindcss"
-                  class="icon" />
-                <div>
-                  <h3>tailwindcss</h3>
-                </div>
-              </article>
-
-              <article>
-                <img
-                  src="./assets/png/bxl-bootstrap.png"
-                  alt="Bootstrap"
-                  class="icon" />
-                <div>
-                  <h3>Bootstrap</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-react.png"
-                  alt="Bootstrap"
-                  class="icon" />
-                <div>
-                  <h3>React.js</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-nodejs.png"
-                  alt="Bootstrap"
-                  class="icon" />
-                <div>
-                  <h3>Node.js</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-python.png"
-                  alt="Python"
-                  class="icon" />
-                <div>
-                  <h3>Python</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-django.png"
-                  alt="Django"
-                  class="icon" />
-                <div>
-                  <h3>Django</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-postgresql.png"
-                  alt="Postgresql"
-                  class="icon" />
-                <div>
-                  <h3>Postgresql</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-mongodb.png"
-                  alt="Postgresql"
-                  class="icon" />
-                <div>
-                  <h3>MongoDB</h3>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/png/bxl-docker.png"
-                  alt="Docker"
-                  class="icon" />
-                <div>
-                  <h3>Docker</h3>
-                </div>
-              </article>
-              <article>
-                <img src="./assets/png/bxl-git.png" alt="Git" class="icon" />
-                <div>
-                  <h3>Git</h3>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-container" style="text-align: center">
-        <p>
-          “The magic of a computer lies in its ability to become almost anything
-          you can imagine, as long as you can explain exactly what that is. -
-          Daniel Hillis”
-        </p>
-      </div>
-    </section>
-    <section id="projects">
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.jpg"
-                alt="Project 1"
-                class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Jobify - portal</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/gulshan-kumar-123/Jobify-MERN/tree/main', '_blank')">
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.jpg"
-                alt="Project 2"
-                class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">Recipe app API</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/gulshan-kumar-123/recipe-app-api', '_blank')">
-                Github
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.jpg"
-                alt="Project 3"
-                class="project-img" />
-            </div>
-            <h2 class="experience-sub-title project-title">
-              E-commerce marketplace
-            </h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://github.com/gulshan-kumar-123/Puddle', '_blank')">
-                Github
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon" />
-          <p>
-            <a href="mailto:kr.gulshan932@gmail.com">kr.gulshan932@gmail.com</a>
-          </p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon" />
-          <p>
-            <a
-              href="https://www.linkedin.com/in/gulshan-kumar-767661164/"
-              target="__blanck"
-              >LinkedIn</a
-            >
-          </p>
-        </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/github.png"
-            alt="Github icon"
-            class="icon contact-icon" />
-          <p>
-            <a
-              href="https://github.com/gulshan-kumar-123?tab=repositories"
-              target="__blanck"
-              >Github</a
-            >
+      <div id="about" class="page-block">
+        <div class="page-wrap">
+          <h2 class="block-title">About me</h2>
+          <p class="resume-text">
+            Hi, I'm Gulshan Kumar, a software developer based in India. I'm currently working remotely for Swiggy, building APIs and services with Python, JavaScript, Go, and Java (Spring Boot), and working with AWS, Kafka, and modern data stores. I'm always exploring new technologies and challenges.
           </p>
         </div>
       </div>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/png/file-pdf-solid-240.png"
-            alt="PDF icon"
-            class="icon contact-icon" />
-          <p><a href="Gulshan_kumar.pdf" target="__blanck">Download CV</a></p>
+
+      <div id="experience" class="page-block">
+        <div class="page-wrap">
+          <h2 class="block-title">Experience</h2>
+          <div class="resume-item">
+            <h3 class="resume-item-title">Swiggy (Software Developer I)</h3>
+            <p class="resume-item-meta">March 24 – present</p>  
+            <ul class="resume-bullets">
+              <li>Partner app changes.</li>
+              <li>Chatbot changes</li>
+            </ul>
+          </div>
+          <div class="resume-item">
+            <h3 class="resume-item-title">CRUV.org (Software Intern)</h3>
+            <p class="resume-item-meta">Aug 23 – Feb 24</p>
+            <ul class="resume-bullets">
+              <li>Created the protocol layer utility for the food delivery app to interact with ONDC (open network for digital commerce, Gov. of India).</li>
+              <li>Developed API using Python and Django to serialize front-end data for ONDC compatibility and efficiently parsed responses.</li>
+              <li>Implemented code optimizations and collaborated effectively in a team environment, utilizing Git for version control.</li>
+            </ul>
+          </div>
+          <div class="resume-item">
+            <h3 class="resume-item-title">Subros Ltd (Supply chain engineer)</h3>
+            <p class="resume-item-meta">Sep 21 – Mar 23</p>
+            <ul class="resume-bullets">
+              <li>Coordinated with Stakeholders weekly/monthly to provide actionable insights like cost-saving projects on various manufacturing business units.</li>
+              <li>Transformed raw data and visualized it through plots, emphasizing features like price, cost, etc.</li>
+              <li>Lead client and supplier dealings – Cost analysis, negotiations, audits.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+
+      <div id="education" class="page-block">
+        <div class="page-wrap">
+          <h2 class="block-title">Education</h2>
+          <div class="resume-item">
+            <h3 class="resume-item-title">National Institute of Technology, Kurukshetra</h3>
+            <p class="resume-item-meta">2017 – 2021</p>
+            <p class="resume-text">Bachelor of Technology in Mechanical engineering · 8.2</p>
+          </div>
+          <div class="resume-item">
+            <h3 class="resume-item-title">Modern Vidya Niketan, Faridabad</h3>
+            <p class="resume-item-meta">2017</p>
+            <p class="resume-text">Higher senior secondary · 90.4%</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="skills" class="page-block">
+        <div class="page-wrap">
+          <h2 class="block-title">Skills</h2>
+          <div class="skills-grid">
+            <p class="resume-text"><strong>Back-end</strong> Python, JavaScript, Go, Java, Spring Boot</p>
+            <p class="resume-text"><strong>Database</strong> MySQL, DynamoDB, Snowflake</p>
+            <p class="resume-text"><strong>Cloud</strong> AWS S3, EC2, ElastiCache, Redis</p>
+            <p class="resume-text"><strong>Tools</strong> Docker, Git, Kafka, Jira</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="projects" class="page-block">
+        <div class="page-wrap">
+          <h2 class="block-title">Projects</h2>
+          <div class="resume-item">
+            <h3 class="resume-item-title">Jobify – MERN</h3>
+            <ul class="resume-bullets">
+              <li>Created job tracking portal using React.js and Express.js and deployed the website using render.</li>
+              <li>Used JWT for authentication and MongoDB for efficiently storing user credentials and job postings.</li>
+            </ul>
+            <a href="https://github.com/gulshan-kumar-123/Jobify-MERN/tree/main" target="_blank" rel="noopener" class="link-arrow">View on GitHub <span>→</span></a>
+          </div>
+          <div class="resume-item">
+            <h3 class="resume-item-title">Puddle E-marketplace</h3>
+            <ul class="resume-bullets">
+              <li>Developed the back-end functionality using Python and Django, including authentication mechanisms for user registration and login.</li>
+              <li>Implemented features for user communication, enabling buyers and sellers to interact, negotiate, and manage their items through a dashboard with options to add, edit, and delete listings.</li>
+            </ul>
+            <a href="https://github.com/gulshan-kumar-123/Puddle" target="_blank" rel="noopener" class="link-arrow">View on GitHub <span>→</span></a>
+          </div>
+          <div class="resume-item">
+            <h3 class="resume-item-title">Recipe app API</h3>
+            <ul class="resume-bullets">
+              <li>Created a recipe API using Python and Django REST framework, with functionality for user registration, recipe creation with ingredients, and tag association.</li>
+              <li>Used Token authentication for implementing authentication and authorization mechanisms to secure the API.</li>
+              <li>Utilized Docker to create a containerized environment for the project, ensuring portability and ease of deployment.</li>
+            </ul>
+            <a href="https://github.com/gulshan-kumar-123/recipe-app-api" target="_blank" rel="noopener" class="link-arrow">View on GitHub <span>→</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div id="certifications" class="page-block">
+        <div class="page-wrap">
+          <h2 class="block-title">Certifications</h2>
+          <ul class="resume-bullets">
+            <li>MERN Stack Course – MongoDB, Express, React and NodeJS – Udemy</li>
+            <li>Django 4 and Python Full-Stack Developer Masterclass – Udemy</li>
           </ul>
         </div>
-      </nav>
-      <p>Gulshan Kumar 2024</p>
-    </footer>
+      </div>
+
+      <div id="contact" class="page-block page-block-contact">
+        <div class="page-wrap">
+          <h2 class="block-title">Contact</h2>
+          <p class="hero-contact">
+            <a href="mailto:contact@gulshankumar.dev" class="contact-email">contact@gulshankumar.dev</a>
+            <span class="sep">⋄</span>
+            <a href="tel:+918570967793" class="contact-phone">+91-8570967793</a>
+          </p>
+          <div class="contact-pills">
+            <a href="https://www.linkedin.com/in/gulshan-kumar-767661164/" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill">LinkedIn</a>
+            <a href="https://github.com/gulshan-kumar-123?tab=repositories" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill">GitHub</a>
+            <a href="Gulshan_kumar.pdf" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill">Download CV</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script src="script.js"></script>
-    <script src="noise.min.js"></script>
-    <script src="util.js"></script>
-    <script src="swirl.js"></script>
+    <script>
+      (function () {
+        var loader = document.getElementById("page-loader");
+        var percentEl = document.getElementById("page-loader-percent");
+        var start = Date.now();
+        var minTime = 3000;
+        var loadDone = false;
+        function tryHide() {
+          if (!loadDone) return;
+          var elapsed = Date.now() - start;
+          if (elapsed < minTime) {
+            setTimeout(tryHide, minTime - elapsed);
+            return;
+          }
+          if (loader) loader.classList.add("loaded");
+          document.body.classList.add("page-revealed");
+        }
+        window.addEventListener("load", function () {
+          loadDone = true;
+          tryHide();
+        });
+        (function animatePercent() {
+          var elapsed = Date.now() - start;
+          var p = Math.min(100, Math.floor((elapsed / minTime) * 100));
+          if (percentEl) percentEl.textContent = p + "%";
+          if (elapsed < minTime) requestAnimationFrame(animatePercent);
+          else if (percentEl) percentEl.textContent = "100%";
+        })();
+      })();
+    </script>
   </body>
 </html>
