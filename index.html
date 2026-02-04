@@ -169,9 +169,85 @@
         var start = Date.now();
         var minTime = 3000;
         var loadDone = false;
-        var cmdTyped = false;
-        var cmdText = "cd resume.pdf";
-        var cmdCharDelay = 55;
+        var cmdStarted = false;
+        var charDelay = 55;
+        var backspaceDelay = 50;
+
+        function startCmdPhase() {
+          if (!loader || !cmdEl || cmdStarted) return;
+          cmdStarted = true;
+          loader.classList.add("show-cmd");
+          cmdEl.innerHTML = "";
+          var cursor = document.createElement("span");
+          cursor.className = "typewriter-cursor";
+          cursor.setAttribute("aria-hidden", "true");
+          cmdEl.appendChild(cursor);
+          var chars = [];
+          function appendSpan(ch) {
+            var s = document.createElement("span");
+            s.className = "type-char";
+            s.textContent = ch;
+            s.style.opacity = "0";
+            chars.push(s);
+            return s;
+          }
+          function typeThen(text, done) {
+            var i = 0;
+            function next() {
+              if (i >= text.length) {
+                if (done) done();
+                return;
+              }
+              var s = appendSpan(text[i]);
+              cmdEl.insertBefore(s, cursor);
+              s.style.opacity = "1";
+              if (cursor.parentNode) cmdEl.insertBefore(cursor, s.nextSibling);
+              i++;
+              if (i < text.length) setTimeout(next, charDelay);
+              else if (done) setTimeout(done, charDelay);
+            }
+            next();
+          }
+          function backspaceTimes(n, afterMs, done) {
+            setTimeout(function () {
+              var idx = 0;
+              function next() {
+                if (idx >= n || chars.length === 0) {
+                  if (done) done();
+                  return;
+                }
+                var last = chars.pop();
+                if (last.parentNode) last.parentNode.removeChild(last);
+                if (chars.length > 0 && cursor.parentNode) {
+                  var prev = chars[chars.length - 1];
+                  cursor.parentNode.removeChild(cursor);
+                  prev.parentNode.insertBefore(cursor, prev.nextSibling);
+                }
+                idx++;
+                if (idx < n) setTimeout(next, backspaceDelay);
+                else if (done) setTimeout(done, backspaceDelay);
+              }
+              next();
+            }, afterMs);
+          }
+          typeThen("opening resumi", function () {
+            setTimeout(function () {
+              backspaceTimes(6, 0, function () {
+                setTimeout(function () {
+                  typeThen(" resume.pdf", function () {
+                    setTimeout(function () {
+                      if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+                      loader.classList.add("loaded");
+                      document.body.classList.add("page-revealed");
+                      document.body.dispatchEvent(new CustomEvent("page-revealed"));
+                    }, 500);
+                  });
+                }, 120);
+              });
+            }, 80);
+          });
+        }
+
         function tryHide() {
           if (!loadDone) return;
           var elapsed = Date.now() - start;
@@ -179,47 +255,20 @@
             setTimeout(tryHide, minTime - elapsed);
             return;
           }
-          if (!cmdTyped && loader && cmdEl) {
-            cmdTyped = true;
-            loader.classList.add("show-cmd");
-            cmdEl.textContent = "";
-            var cursor = document.createElement("span");
-            cursor.className = "typewriter-cursor";
-            cursor.setAttribute("aria-hidden", "true");
-            cmdEl.appendChild(cursor);
-            for (var i = 0; i < cmdText.length; i++) {
-              var span = document.createElement("span");
-              span.className = "type-char";
-              span.textContent = cmdText[i];
-              cmdEl.appendChild(span);
-            }
-            var chars = cmdEl.querySelectorAll(".type-char");
-            chars.forEach(function (c, i) {
-              setTimeout(function () {
-                c.classList.add("visible");
-                cmdEl.insertBefore(cursor, c.nextSibling);
-              }, i * cmdCharDelay);
-            });
-            var typeDuration = cmdText.length * cmdCharDelay;
-            setTimeout(function () {
-              if (cursor.parentNode) cursor.remove();
-            }, typeDuration);
-            setTimeout(function () {
-              if (loader) loader.classList.add("loaded");
-              document.body.classList.add("page-revealed");
-              document.body.dispatchEvent(new CustomEvent("page-revealed"));
-            }, typeDuration + 500);
-            return;
-          }
-          if (cmdTyped) return;
-          if (loader) loader.classList.add("loaded");
-          document.body.classList.add("page-revealed");
-          document.body.dispatchEvent(new CustomEvent("page-revealed"));
+          startCmdPhase();
         }
+
         window.addEventListener("load", function () {
           loadDone = true;
           tryHide();
         });
+        setTimeout(function () {
+          if (!loadDone) {
+            loadDone = true;
+            tryHide();
+          }
+        }, minTime + 100);
+
         (function animatePercent() {
           var elapsed = Date.now() - start;
           var p = Math.min(100, Math.floor((elapsed / minTime) * 100));
