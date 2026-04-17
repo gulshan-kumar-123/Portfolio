@@ -8,32 +8,39 @@
     <title>Gulshan Kumar — Software Developer</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
-    <link rel="icon" type="image/png" href="./assets/title.png" />
+    <link rel="icon" type="image/png" href="./assets/logo.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="page-loader" id="page-loader" aria-hidden="true">
-      <span class="page-loader-percent" id="page-loader-percent">0%</span>
-      <span class="page-loader-cmd" id="page-loader-cmd"></span>
+    <div class="page-loader" id="page-loader" aria-busy="true" aria-live="polite">
+      <img class="page-loader-gif" src="./assets/loader.gif" alt="" width="160" height="160" decoding="async" />
     </div>
 
-    <main class="page">
-      <div class="hero scroll-anim" id="profile">
-        <div class="hero-inner">
-          <h1 class="hero-title type-on-scroll">Gulshan Kumar</h1>
-          <p class="hero-subtitle">Software Developer</p>
-          <p class="hero-contact">
-            <a href="mailto:contact@gulshankumar.dev" class="contact-email">contact@gulshankumar.dev</a>
-          </p>
-          <p class="hero-contact">
-            <a href="tel:+918570967793" class="contact-phone">+91-8570967793</a>
-          </p>
-        </div>
+    <div class="app-shell">
+      <div class="app-left">
+        <header class="hero" id="profile">
+          <div class="hero-inner">
+            <h1 class="hero-title">Gulshan Kumar</h1>
+            <p class="hero-subtitle">Software Developer</p>
+            <p class="hero-contact">
+              <a href="mailto:contact@gulshankumar.dev" class="contact-email">contact@gulshankumar.dev</a>
+            </p>
+            <p class="hero-contact">
+              <a href="tel:+918570967793" class="contact-phone">+91-8570967793</a>
+            </p>
+          </div>
+        </header>
+
+        <aside class="app-sidebar" aria-hidden="true">
+          <img class="app-sidebar-gif" src="./assets/computer.gif" alt="" decoding="async" />
+        </aside>
       </div>
 
-      <div id="about" class="page-block">
+      <div class="app-main" id="app-main">
+        <main class="page">
+        <div id="about" class="page-block">
         <div class="page-wrap scroll-anim">
           <h2 class="block-title type-on-scroll">About me</h2>
           <p class="resume-text">
@@ -152,99 +159,46 @@
             <a href="tel:+918570967793" class="contact-phone">+91-8570967793</a>
           </p>
           <div class="contact-pills">
-            <a href="https://www.linkedin.com/in/gulshan-kumar-767661164/" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill">LinkedIn</a>
-            <a href="https://github.com/gulshan-kumar-123?tab=repositories" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill">GitHub</a>
-            <a href="Gulshan_kumar.pdf" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill">Download CV</a>
+            <a href="https://www.linkedin.com/in/gulshan-kumar-767661164/" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill btn-contact-linkedin">LinkedIn</a>
+            <a href="https://github.com/gulshan-kumar-123?tab=repositories" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill btn-contact-github">GitHub</a>
+            <a href="Gulshan_kumar.pdf" target="_blank" rel="noopener" class="btn btn-pill btn-contact-pill btn-contact-cv">Download CV</a>
           </div>
         </div>
       </div>
-    </main>
+        </main>
+      </div>
+    </div>
 
     <script src="script.js"></script>
     <script>
       (function () {
         var loader = document.getElementById("page-loader");
-        var percentEl = document.getElementById("page-loader-percent");
-        var cmdEl = document.getElementById("page-loader-cmd");
         var start = Date.now();
         var minTime = 3000;
         var loadDone = false;
-        var cmdStarted = false;
-        var charDelay = 55;
-        var backspaceDelay = 50;
 
-        function startCmdPhase() {
-          if (!loader || !cmdEl || cmdStarted) return;
-          cmdStarted = true;
-          loader.classList.add("show-cmd");
-          cmdEl.innerHTML = "";
-          var cursor = document.createElement("span");
-          cursor.className = "typewriter-cursor";
-          cursor.setAttribute("aria-hidden", "true");
-          cmdEl.appendChild(cursor);
-          var chars = [];
-          function appendSpan(ch) {
-            var s = document.createElement("span");
-            s.className = "type-char";
-            s.textContent = ch;
-            s.style.opacity = "0";
-            chars.push(s);
-            return s;
+        function scrollMainToHash() {
+          var id = location.hash.slice(1);
+          if (!id) return;
+          var el = document.getElementById(id);
+          if (!el) return;
+          el.scrollIntoView({ behavior: "auto", block: "start" });
+        }
+
+        function reveal() {
+          if (!loader) {
+            document.body.classList.add("page-revealed");
+            document.body.dispatchEvent(new CustomEvent("page-revealed"));
+            requestAnimationFrame(scrollMainToHash);
+            return;
           }
-          function typeThen(text, done) {
-            var i = 0;
-            function next() {
-              if (i >= text.length) {
-                if (done) done();
-                return;
-              }
-              var s = appendSpan(text[i]);
-              cmdEl.insertBefore(s, cursor);
-              s.style.opacity = "1";
-              if (cursor.parentNode) cmdEl.insertBefore(cursor, s.nextSibling);
-              i++;
-              if (i < text.length) setTimeout(next, charDelay);
-              else if (done) setTimeout(done, charDelay);
-            }
-            next();
-          }
-          function backspaceTimes(n, afterMs, done) {
-            setTimeout(function () {
-              var idx = 0;
-              function next() {
-                if (idx >= n || chars.length === 0) {
-                  if (done) done();
-                  return;
-                }
-                var last = chars.pop();
-                if (last.parentNode) last.parentNode.removeChild(last);
-                if (chars.length > 0 && cursor.parentNode) {
-                  var prev = chars[chars.length - 1];
-                  cursor.parentNode.removeChild(cursor);
-                  prev.parentNode.insertBefore(cursor, prev.nextSibling);
-                }
-                idx++;
-                if (idx < n) setTimeout(next, backspaceDelay);
-                else if (done) setTimeout(done, backspaceDelay);
-              }
-              next();
-            }, afterMs);
-          }
-          typeThen("opening resumi", function () {
-            setTimeout(function () {
-              backspaceTimes(6, 0, function () {
-                setTimeout(function () {
-                  typeThen(" resume.pdf", function () {
-                    setTimeout(function () {
-                      if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
-                      loader.classList.add("loaded");
-                      document.body.classList.add("page-revealed");
-                      document.body.dispatchEvent(new CustomEvent("page-revealed"));
-                    }, 500);
-                  });
-                }, 120);
-              });
-            }, 80);
+          loader.classList.add("loaded");
+          loader.setAttribute("aria-busy", "false");
+          loader.setAttribute("aria-hidden", "true");
+          document.body.classList.add("page-revealed");
+          document.body.dispatchEvent(new CustomEvent("page-revealed"));
+          requestAnimationFrame(function () {
+            requestAnimationFrame(scrollMainToHash);
           });
         }
 
@@ -255,7 +209,7 @@
             setTimeout(tryHide, minTime - elapsed);
             return;
           }
-          startCmdPhase();
+          reveal();
         }
 
         window.addEventListener("load", function () {
@@ -269,13 +223,7 @@
           }
         }, minTime + 100);
 
-        (function animatePercent() {
-          var elapsed = Date.now() - start;
-          var p = Math.min(100, Math.floor((elapsed / minTime) * 100));
-          if (percentEl) percentEl.textContent = p + "%";
-          if (elapsed < minTime) requestAnimationFrame(animatePercent);
-          else if (percentEl) percentEl.textContent = "100%";
-        })();
+        window.addEventListener("hashchange", scrollMainToHash);
       })();
     </script>
   </body>

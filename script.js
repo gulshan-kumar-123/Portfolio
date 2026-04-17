@@ -8,9 +8,6 @@
   document.querySelectorAll(".page-wrap.scroll-anim > *:not(.block-title)").forEach(function (el) {
     el.classList.add("line-reveal");
   });
-  document.querySelectorAll(".hero.scroll-anim .hero-inner > *:not(.hero-title)").forEach(function (el) {
-    el.classList.add("line-reveal");
-  });
 
   function runTypewriter(el, onDone) {
     if (el.dataset.typed === "1") {
