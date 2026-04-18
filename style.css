@@ -495,4 +495,7 @@ body.page-revealed .page {
   color: #ffffff;
 }
 
-
+::selection {
+  background-color: #ff2ec4;
+  color: #000000;
+}
