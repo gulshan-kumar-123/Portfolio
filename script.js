@@ -73,7 +73,7 @@
           for (let i = 0; i < line.length; i++) {
             if (stopped) return;
             bootOutput.textContent = line.slice(0, i + 1);
-            await wait(26);
+            await wait(12);
           }
           await wait(240);
         }
@@ -94,7 +94,7 @@
             for (let i = 0; i < prefixText.length; i++) {
               if (stopped) return;
               node.textContent = prefixText.slice(0, i + 1);
-              await wait(24);
+              await wait(10);
             }
           }
           stage.command.classList.add('typing-command');
@@ -102,16 +102,16 @@
           for (let i = 0; i < text.length; i++) {
             if (stopped) return;
             stage.command.textContent = text.slice(0, i + 1);
-            await wait(45 + (i % 3) * 14);
+            await wait(16 + (i % 3) * 4);
           }
           stage.command.classList.remove('typing-command');
           for (const output of stage.output) {
             if (stopped) return;
             output.classList.remove('terminal-output-pending');
             output.classList.add('terminal-output-arriving');
-            await wait(280);
+            await wait(120);
           }
-          await wait(380);
+          await wait(180);
         }
       } finally {
         finish();

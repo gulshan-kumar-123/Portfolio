@@ -245,3 +245,7 @@ h2.eyebrow { font-size:23px; }
 .profile-links>a>span:first-child::before { content:none; }
 .profile-links>a>span:last-child { justify-self:end; align-self:center; line-height:1; }
 .profile-links small { display:block; margin:6px 0 0; line-height:1.5; }
+
+.email-link { display:inline-flex; align-items:center; gap:10px; min-width:0; }
+.mail-icon { width:18px; height:18px; flex:0 0 18px; }
+.email-link span { min-width:0; overflow-wrap:anywhere; }
