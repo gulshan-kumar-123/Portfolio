@@ -42,9 +42,6 @@
         hidden.push(output);
       }
     }
-    const tail = Array.from(document.querySelectorAll('.bottom-contact'));
-    tail.forEach(el => el.classList.add('terminal-output-pending'));
-    hidden.push(...tail);
     const onEscape = event => { if (event.key === 'Escape') finish(); };
     function finish() {
       stopped = true;

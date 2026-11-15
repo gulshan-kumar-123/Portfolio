@@ -22,8 +22,6 @@
   .background-grid { grid-template-columns:1fr; gap:32px; }
   .experience-row,.background-grid>div { padding-left:18px; }
   .profile-links small { display:block; margin:8px 0 0; }
-  .bottom-contact { flex-direction:column; font-size:14px; }
-  .bottom-contact .shell-command { font-size:16px; }
   .site-footer { font-size:10px; }
 }
 @media(max-width:900px) {
@@ -77,10 +75,4 @@
     text-align:left;
   }
   .profile-links small { margin:6px 0 0; overflow-wrap:anywhere; }
-}
-
-@media(max-width:760px) {
-  .bottom-contact { flex-direction:column; align-items:flex-start; gap:12px; font-size:14px; }
-  .bottom-contact .shell-command { font-size:13px; line-height:1.8; margin-bottom:8px; }
-  .bottom-contact>a { max-width:100%; font-size:14px; line-height:1.6; overflow-wrap:anywhere; }
 }
