@@ -9,7 +9,6 @@
   .project-grid { grid-template-columns:1fr; }
 }
 @media(max-width:620px) {
-  #portfolio { padding-top:20px; }
   .wrap { width:calc(100% - 32px); }
   .masthead { padding:14px 16px 16px; margin-bottom:18px; }
   .masthead-meta { font-size:8px; letter-spacing:0; }
@@ -51,7 +50,7 @@
 .desktop-content { width:100%; }
 .sql-output { width:100%; min-width:0; overscroll-behavior-x:contain; }
 @media(max-width:620px) {
-  #portfolio { padding:10px 0; }
+  #portfolio { --terminal-gutter:10px; }
   .desktop-window.wrap,.reopen-terminal.wrap { width:calc(100% - 16px); }
   .desktop-window { padding:0 8px 8px; }
   .window-bar { margin-inline:-8px; padding:0 0 0 8px; gap:4px; }

@@ -216,7 +216,16 @@ h1 { margin:24px 0 14px; }
 }
 
 [hidden] { display:none !important; }
-.window-bar { align-items:center; padding:0 0 0 8px; min-height:32px; }
+#portfolio { --terminal-gutter:32px; padding-block:var(--terminal-gutter); }
+.desktop-window { display:flex; flex-direction:column; }
+.desktop-window:has(.desktop-layout:not([hidden])) {
+  height:calc(100vh - 2 * var(--terminal-gutter));
+  height:calc(100dvh - 2 * var(--terminal-gutter));
+  min-height:160px;
+}
+.desktop-layout { flex:1; min-height:0; overflow:auto; scroll-padding:12px; }
+.desktop-layout:focus-visible { outline:2px solid var(--text); outline-offset:-2px; }
+.window-bar { flex-shrink:0; align-items:center; padding:0 0 0 8px; min-height:32px; }
 .window-controls { display:flex; align-self:stretch; }
 .window-controls button { appearance:none; display:grid; place-items:center; width:32px; min-height:32px; padding:0; border:0; border-left:1px solid #ededed; background:#000; color:#fff; font:24px/1 var(--mono); cursor:pointer; }
 .window-controls button:hover { background:#333; }

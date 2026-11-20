@@ -16,14 +16,14 @@
   <div id="portfolio">
   <div class="desktop-window wrap" id="terminal-window">
   <div class="window-bar"><span>❯_ /TERMINAL.exe</span><div class="window-controls"><button type="button" id="reload-terminal" aria-label="Reload terminal" title="Reload terminal">↻</button><button type="button" id="minimize-terminal" aria-label="Minimize terminal" aria-expanded="true" aria-controls="terminal-content">−</button><button type="button" id="close-terminal" aria-label="Close terminal">×</button></div></div>
-  <div class="desktop-layout" id="terminal-content">
+  <div class="desktop-layout" id="terminal-content" role="region" aria-label="Terminal output" tabindex="0">
   <div class="desktop-content">
   <header class="profile-header" id="about">
     <div class="terminal-boot" id="terminal-boot" hidden aria-label="Opening terminal" role="status">
       <p id="boot-output"></p>
     </div>
     <p class="shell-command"><span class="prompt">gulshan@portfolio</span><span class="path">:~</span>$ <span class="typed-command">whoami</span></p>
-    <p class="whoami-summary">I build APIs and backend services at Swiggy. I work with Python, JavaScript, Go, and Java, alongside AWS, Kafka, and modern data stores. I enjoy understanding how systems work and finding practical ways to connect them.</p>
+    <p class="whoami-summary">Hi I am gulshan and I build APIs and backend services at Swiggy. I work with Python, JavaScript, Go, and Java, alongside AWS, Kafka, and modern data stores. I enjoy understanding how systems work and finding practical ways to connect them.</p>
   </header>
   <div class="mysql-session">
     <p class="shell-command"><span class="prompt">gulshan@portfolio</span><span class="path">:~</span>$ <span class="typed-command">mysql -u gulshan -D portfolio</span></p>
@@ -32,7 +32,7 @@
   <main id="main">
     <section class="section wrap" id="experience" aria-labelledby="experience-title">
       <div class="section-heading"><h2 class="eyebrow" id="experience-title"><span class="prompt">gulshan@portfolio</span><span class="path">:~</span>$ <span class="typed-command">cat work-experience.log</span></h2></div>
-      <div class="experience-row"><p class="experience-date mono">MAR 2024 — PRESENT</p><div><h3>Swiggy <span class="current-tag mono">active</span></h3><p class="role">Software Developer I</p></div><p>Working on partner app and chatbot changes, building APIs and services in a remote team.</p></div>
+      <div class="experience-row"><p class="experience-date mono">MAR 2024 — PRESENT</p><div><h3>Swiggy <span class="current-tag mono">active</span></h3><p class="role">Software Developer I</p></div><p>Working on partner app and chatbot changes, building APIs and services.</p></div>
       <div class="experience-row"><p class="experience-date mono">AUG 2023 — FEB 2024</p><div><h3>CRUV.org</h3><p class="role">Software Intern</p></div><p>Built a protocol utility for an ONDC food delivery app. Developed Python and Django APIs for compatible data serialization and response parsing.</p></div>
       <div class="experience-row"><p class="experience-date mono">SEP 2021 — MAR 2023</p><div><h3>Subros Ltd</h3><p class="role">Supply Chain Engineer</p></div><p>Analyzed cost and manufacturing data, identified cost-saving opportunities, and coordinated client and supplier negotiations and audits.</p></div>
     </section>
